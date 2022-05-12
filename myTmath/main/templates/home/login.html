@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="login__container h-auto w-full rounded-xl p-4 ">
+        <div class="user_profile flex">
+            {% load static %}
+            <img class="h-12 w-12 mr-4 rounded-full" src="{% static 'images/user.png' %}" alt="">
+            <div class="">
+                <div class="text-base font-semibold">Welcome!✋🏻</div>
+                <div class="text-xs font-medium text-gray-400">Let's learn something new today</div>
+            </div>
+        </div>
+        <div class="user_login_register grid grid-cols-2 gap-2 mt-4">
+            <a href="{% url 'login' %}">
+                <div class="login_btn text-center text-sm p-2 rounded-lg cursor-pointer">Login</div>
+            </a>
+            
+            <div class="register_btn text-center text-sm p-2 rounded-lg cursor-pointer">Register</div>
+        </div>
+        
+    </div>
+    {% include 'root.html' %} 
+    <style>
+        .login__container {
+            background: var(--sidebar-color);
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .login_btn, .register_btn {
+            background: #242526;
+            color: #fff;
+        }
+
+        .login_btn:hover, .register_btn:hover {
+            background: #3a3b3c;
+        }
+
+    </style>
+</body>
+</html>
