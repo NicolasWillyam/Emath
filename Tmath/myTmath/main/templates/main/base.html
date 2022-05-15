@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----========== Favicon ========== -->
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/emath.png' %}">
+
+    <!----========== Boxicons CSS ========== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!----========== Script ========== -->
+ 
+  
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body id="body">
+
+    <!----========== NAVBAR ==========---->
+    <nav class="sidebar close" id="nav">
+        <header>
+            <a href="{% url 'home' %}">
+                <div class="image-text">
+                    {% load static %}
+                    <img class="m-2 mb-0 h-8 w-8" src="{% static 'images/emath.png' %}" alt="">
+                    <div class="text logo-text">
+                        <span class="name">Emath</span>
+                        <span class="profession">Learn for Future</span>
+                    </div>
+                </div>
+            </a>
+            
+
+            <i class='bx bx-chevron-right toggle bx-xs mt-1'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{% url 'home' %}">
+                            <i class='bx bx-home-alt icon' ></i>
+                            <span class="text nav-text">Home</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{% url 'problems' %}">
+                            <i class='bx bx-task icon'></i>
+                            <span class="text nav-text">Problems</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{% url 'submissions' %}">
+                            <i class='bx bx-book-content icon'></i>
+                            <span class="text nav-text">Submissions</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{% url 'contest' %}">
+                            <i class='bx bx-bar-chart-alt-2 icon'></i>
+                            <span class="text nav-text">Contest</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+
+    </nav>
+
+    <div class="home_container ml-20 mr-20 p-8 pt-6">
+
+        <!----========== HEADER ==========---->
+        <div class="header flex">
+            <div class="block">
+                <div class="text-2xl font-semibold">{% block headertitle %}{% endblock %}!✋🏻</div>
+                <div class="text-base text-gray-400 font-medium">Let's learn something new today!</div>
+            </div>
+    
+            <div class="search_bar h-10 ml-auto w-96 bg-white flex items-center rounded-lg text-gray-400">
+                <i class='bx bx-search icon bx-sm m-2'></i>
+                <input class="w-80 text-sm outline-none font-medium" type="text" placeholder="Search something here...">
+            </div>
+        
+            <div class="notification_box ml-2 text-gray-400 h-10 w-10 bg-white rounded-lg flex justify-center items-center">
+                <i class='bx bx-bell bx-sm'></i>
+            </div>
+        </div>
+
+        <!----========== HOME ==========---->
+        {% block home_container %}
+        {% endblock %}
+
+        <!----========== PROBLEMS ==========---->
+        {% block problems_container %}
+        {% endblock %}
+
+        <!----========== SUBMISSIONS ==========---->
+        {% block submissions_container %}
+        {% endblock %}
+
+        <!----========== SUBMISSIONS ==========---->
+        {% block contest_container %}
+        {% endblock %}
+
+
+    </div> 
+
+
+    <div class="rightbar__container">
+
+        <!----========== LOGIN ==========---->
+        <div class="login__container h-auto w-full rounded-xl p-4 ">
+            <div class="user_profile flex">
+                {% load static %}
+                <img class="h-12 w-12 mr-4 rounded-full" src="{% static 'images/user.png' %}" alt="">
+                <div class="">
+                    <div class="text-base font-semibold">Welcome!✋🏻</div>
+                    <div class="text-xs font-medium text-gray-400">Let's learn something new today</div>
+                </div>
+            </div>
+            <div class="user_login_register grid grid-cols-2 gap-2 mt-4">
+                <a href="{% url 'login' %}">
+                    <div class="login_btn text-center text-sm p-2 rounded-lg cursor-pointer">Login</div>
+                </a>
+                
+                <div class="register_btn text-center text-sm p-2 rounded-lg cursor-pointer">Register</div>
+            </div>
+        </div>
+        
+        <!----========== NOTIFICATION ==========---->
+        <div class="notification_container">
+            <div class="flex mt-6 mb-3">
+                <div class="font-semibold flex items-center">
+                    <i class='bx bxs-bell-ring text-yellow-400 mr-1'></i>
+                    Notifications
+                </div>
+                <div class="text-gray-400 ml-auto cursor-pointer font-medium text-sm">See all</div>
+            </div>
+
+            <div class="notifications__container rounded-xl p-4 pl-5 pr-5">
+                <div class="notifications__title flex">
+                    <div class="text-base font-semibold">Emath Class</div>
+                    <div class="btn ml-auto class_register text-sm font-medium p-1 pl-4 pr-4 rounded-md cursor-pointer">Register</div>
+                </div>
+            </div>
+
+        </div>
+        
+        <!----========== RECENT CONTEST ==========---->
+        {% block recent_contest %}
+        {% endblock %}
+
+        <!----========== UPCOMING CONTEST ==========---->
+        {% block upcoming_contest %}
+        {% endblock %}
+
+
+    </div>
+
+
+    <script>
+        const body = document.getElementById('body'),
+        sidebar = body.querySelector('nav'),
+        toggle = body.querySelector(".toggle"),
+        searchBtn = body.querySelector(".search-box"),
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
+
+        toggle.addEventListener("click" , () =>{
+            sidebar.classList.toggle("close");
+        })
+
+        searchBtn.addEventListener("click" , () =>{
+            sidebar.classList.remove("close");
+        })
+
+        modeSwitch.addEventListener("click" , () =>{
+            body.classList.toggle("dark");
+            
+            if(body.classList.contains("dark")){
+                modeText.innerText = "Light mode";
+            }else{
+                modeText.innerText = "Dark mode";
+                
+            }
+        });
+    </script>
+
+
+
+</body>
+</html>
